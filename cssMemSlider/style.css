@@ -2,6 +2,8 @@
     --bg-color: #25282a;
     --dot-color: #71abfe;
     --width: 70vw;
+    --mems-cnt: 4;
+    --anim-spd: 0.5s;
 }
 
 body{
@@ -27,13 +29,13 @@ body{
 .slider-wrapper{
     grid-area: slides;
     width: var(--width);
-    transition: all 2s ease-in-out;
+    transition: all var(--anim-spd) ease-in-out;
 }
 
 .slides-content{
     border-radius: 3vmin;
     display: grid;
-    grid-template-columns: repeat(3, var(--width));
+    grid-template-columns: repeat(var(--mems-cnt), var(--width));
     /* transform: translateX(20vw); */
 }
 
@@ -58,9 +60,9 @@ body{
 
 .text-wrapper{
     display: grid;
-    grid-template-columns: repeat(3, var(--width));
+    grid-template-columns: repeat(var(--mems-cnt), var(--width));
     /* transform: translateX(0vw); */
-    transition: all 2s ease-in-out;
+    transition: all var(--anim-spd) ease-in-out;
 }
 
 .label{
@@ -84,26 +86,34 @@ body{
 
 /* css magic */
 
-#mem1:checked ~ .slider .slider-wrapper{
+#mem0:checked ~ .slider .slider-wrapper{
     transform: translateX( calc(0 * var(--width)));
+}
+
+#mem1:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(-1 * var(--width)));
 }
 
 #mem2:checked ~ .slider .slider-wrapper{
-    transform: translateX( calc(-1 * var(--width)));
+    transform: translateX( calc(-2 * var(--width)));
 }
 
 #mem3:checked ~ .slider .slider-wrapper{
-    transform: translateX( calc(-2 * var(--width)));
+    transform: translateX( calc(-3 * var(--width)));
 }
 
-#mem1:checked ~ .slider .text-wrapper{
+#mem0:checked ~ .slider .text-wrapper{
     transform: translateX( calc(0 * var(--width)));
 }
 
-#mem2:checked ~ .slider .text-wrapper{
+#mem1:checked ~ .slider .text-wrapper{
     transform: translateX( calc(-1 * var(--width)));
 }
 
-#mem3:checked ~ .slider .text-wrapper{
+#mem2:checked ~ .slider .text-wrapper{
     transform: translateX( calc(-2 * var(--width)));
+}
+
+#mem3:checked ~ .slider .text-wrapper{
+    transform: translateX( calc(-3 * var(--width)));
 }
