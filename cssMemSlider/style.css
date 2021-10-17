@@ -1,0 +1,266 @@
+:root {
+    --bg-color: #25282a;
+    --dot-color: #71abfe;
+    --dot-active-color: #bcbdbe;
+    --width: 50vw;
+    --mems-cnt: 4;
+    --anim-spd: 0.5s;
+}
+
+body{
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: var(--dot-color);
+    /* color: white; */
+    font-size: 16px;
+}
+
+h1{
+    text-align: center;
+}
+
+h1 > a{
+    text-decoration: underline;
+    color: var(--dot-color);
+}
+
+  
+h1 > a:hover{
+    color: white;
+}
+
+h1 > a:active{
+    color: var(--dot-active-color);
+}
+
+body > input{
+    display: none;
+}
+
+.slider{
+    margin: 1vh auto;
+    padding: 5vh;
+    width: var(--width);
+    display: grid;
+    grid-template-areas:
+    "slides slides"
+    "text dots";
+
+    /* "slides slides slides" */
+    /* "text . dots"; */
+    gap: 2vw;
+    background-color: var(--bg-color);
+    align-items: center;
+    overflow: hidden;
+    border-radius: 3vmin;
+    box-shadow: 0px 0px 8px 2px rgba(255, 255, 255, 0.2) inset;
+}
+
+.slider-wrapper{
+    grid-area: slides;
+    width: var(--width);
+    transition: all var(--anim-spd) ease-in-out;
+}
+
+.slides-content{
+    display: grid;
+    grid-template-columns: repeat(var(--mems-cnt), var(--width));
+    /* transform: translateX(20vw); */
+    column-gap: 20vw;
+}
+
+.slide{
+    width: var(--width);
+    display: flex;
+    justify-content: center;
+}
+
+.slide img{
+    object-fit: scale-down;
+    width: 100%;
+    height: 30vh;
+    
+}
+
+
+.text{
+    grid-area: text;
+    overflow: hidden;
+}
+
+.text-wrapper{
+    display: grid;
+    grid-template-columns: repeat(var(--mems-cnt), var(--width));
+    /* transform: translateX(0vw); */
+    transition: all var(--anim-spd) ease-in-out;
+}
+
+.label{
+    color: white;
+}
+
+.dots{
+    grid-area: dots;
+    width: 10vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dots label{
+    display: flex;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    padding: 0.7rem;
+}
+
+.dot{
+    /* padding: 0.3rem; */
+    width: 0.7rem;
+    /* height: 0.7rem; */
+    border-radius: 50%;
+    border: 0.2rem solid var(--dot-color);
+    background-color: var(--dot-color);
+}
+
+.dots label:hover > .dot{
+    border-color: white;
+}
+
+
+
+/* #mem0:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(0 * var(--width)));
+} */
+
+/* #mem0,#mem1,#mem2,#mem3:not(:checked):hover ~ .slider .dots label .dot{ */
+    /* background-color: white; */
+/* } */
+/* .radio-btn:not(:checked):hover ~ .slider .dots label .dot{ */
+#mem0:not(:checked):hover ~ .slider .dots label:nth-child(1) .dot{
+    background-color: white;
+}
+#mem0:active ~ .slider .dots label:nth-child(1) .dot{
+    background-color: var(--dot-active-color);
+}
+#mem0:checked ~ .slider .dots label:nth-child(1) .dot{
+    background-color: transparent;
+}
+
+#mem1:not(:checked):hover ~ .slider .dots label:nth-child(2) .dot{
+    background-color: white;
+}
+#mem1:active ~ .slider .dots label:nth-child(2) .dot{
+    background-color: var(--dot-active-color);
+}
+#mem1:checked ~ .slider .dots label:nth-child(2) .dot{
+    background-color: transparent;
+}
+
+#mem2:not(:checked):hover ~ .slider .dots label:nth-child(3) .dot{
+    background-color: white;
+}
+#mem2:active ~ .slider .dots label:nth-child(3) .dot{
+    background-color: var(--dot-active-color);
+}
+#mem2:checked ~ .slider .dots label:nth-child(3) .dot{
+    background-color: transparent;
+}
+
+
+#mem3:not(:checked):hover ~ .slider .dots label:nth-child(4) .dot{
+    background-color: white;
+}
+#mem3:active ~ .slider .dots label:nth-child(4) .dot{
+    background-color: var(--dot-active-color);
+}
+#mem3:checked ~ .slider .dots label:nth-child(4) .dot{
+    background-color: transparent;
+}
+
+.dots label:active > .dot{
+    border-color: var(--dot-active-color);
+    background-color: var(--dot-active-color);
+}
+
+
+/* css magic */
+
+#mem0:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(0 * var(--width) + 0 * 20vw));
+}
+
+#mem1:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(-1 * var(--width) + -1 * 20vw));
+}
+
+#mem2:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(-2 * var(--width) + -2 * 20vw));
+}
+
+#mem3:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(-3 * var(--width) + -3 * 20vw));
+}
+
+#mem0:checked ~ .slider .text-wrapper{
+    transform: translateX( calc(0 * var(--width)));
+}
+
+#mem1:checked ~ .slider .text-wrapper{
+    transform: translateX( calc(-1 * var(--width)));
+}
+
+#mem2:checked ~ .slider .text-wrapper{
+    transform: translateX( calc(-2 * var(--width)));
+}
+
+#mem3:checked ~ .slider .text-wrapper{
+    transform: translateX( calc(-3 * var(--width)));
+}
+
+@media (max-width: 767px) {
+
+    .slider{
+        /* margin: 1vh auto; */
+        /* padding: 5vh; */
+        /* width: var(--width); */
+        display: grid;
+        grid-template-areas:
+        "slides slides"
+        "text text"
+        "dots dots";
+        gap: 2vw;
+        background-color: var(--bg-color);
+        align-items: center;
+        overflow: hidden;
+        border-radius: 3vmin;
+        box-shadow: 0px 0px 8px 2px rgba(255, 255, 255, 0.2) inset;
+        justify-items: center;
+    }
+
+    .text-wrapper{
+        /* display: grid; */
+        /* grid-template-columns: repeat(var(--mems-cnt), var(--width)); */
+        /* transform: translateX(0vw); */
+        /* transition: all var(--anim-spd) ease-in-out; */
+        column-gap: 20vw;
+        justify-items: center;
+    }
+        #mem0:checked ~ .slider .text-wrapper{
+            transform: translateX( calc(0 * var(--width) + 0 * 20vw));
+        }
+        
+        #mem1:checked ~ .slider .text-wrapper{
+            transform: translateX( calc(-1 * var(--width) + -1 * 20vw));
+        }
+        
+        #mem2:checked ~ .slider .text-wrapper{
+            transform: translateX( calc(-2 * var(--width) + -2 * 20vw));
+        }
+        
+        #mem3:checked ~ .slider .text-wrapper{
+            transform: translateX( calc(-3 * var(--width) + -3 * 20vw));
+        }
+             
+
+}
