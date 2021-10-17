@@ -45,6 +45,9 @@ body > input{
     grid-template-areas:
     "slides slides"
     "text dots";
+
+    /* "slides slides slides" */
+    /* "text . dots"; */
     gap: 2vw;
     background-color: var(--bg-color);
     align-items: center;
@@ -72,7 +75,7 @@ body > input{
 }
 
 .slide img{
-    object-fit: contain;
+    /* object-fit: contain; */
     /* width: 100%; */
     height: 50vh;
     
@@ -92,7 +95,7 @@ body > input{
 }
 
 .label{
-
+    color: white;
 }
 
 .dots{
@@ -212,4 +215,27 @@ body > input{
 
 #mem3:checked ~ .slider .text-wrapper{
     transform: translateX( calc(-3 * var(--width)));
+}
+
+@media (max-width: 767px) {
+
+    .slider{
+        /* margin: 1vh auto; */
+        /* padding: 5vh; */
+        /* width: var(--width); */
+        display: grid;
+        grid-template-areas:
+        "slides slides"
+        "text text"
+        "dots dots";
+        gap: 2vw;
+        background-color: var(--bg-color);
+        align-items: center;
+        overflow: hidden;
+        border-radius: 3vmin;
+        box-shadow: 0px 0px 8px 2px rgba(255, 255, 255, 0.2) inset;
+        justify-items: center;
+    }
+    
+
 }
