@@ -1,6 +1,7 @@
 :root {
     --bg-color: #25282a;
     --dot-color: #71abfe;
+    --dot-active-color: #bcbdbe;
     --width: 50vw;
     --mems-cnt: 4;
     --anim-spd: 0.5s;
@@ -9,17 +10,29 @@
 body{
     background-color: black;
     font-family: Arial, sans-serif;
-    color: white;
+    color: var(--dot-color);
+    /* color: white; */
     font-size: 16px;
 }
 
 h1{
     text-align: center;
 }
+
 h1 > a{
-    text-decoration: none;
+    text-decoration: underline;
+    color: var(--dot-color);
+}
+
+  
+h1 > a:hover{
     color: white;
 }
+
+h1 > a:active{
+    color: var(--dot-active-color);
+}
+
 body > input{
     display: none;
 }
@@ -103,7 +116,69 @@ body > input{
     /* height: 0.7rem; */
     border-radius: 50%;
     border: 0.2rem solid var(--dot-color);
+    background-color: var(--dot-color);
 }
+
+.dots label:hover > .dot{
+    border-color: white;
+}
+
+
+
+/* #mem0:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(0 * var(--width)));
+} */
+
+/* #mem0,#mem1,#mem2,#mem3:not(:checked):hover ~ .slider .dots label .dot{ */
+    /* background-color: white; */
+/* } */
+/* .radio-btn:not(:checked):hover ~ .slider .dots label .dot{ */
+#mem0:not(:checked):hover ~ .slider .dots label:nth-child(1) .dot{
+    background-color: white;
+}
+#mem0:active ~ .slider .dots label:nth-child(1) .dot{
+    background-color: var(--dot-active-color);
+}
+#mem0:checked ~ .slider .dots label:nth-child(1) .dot{
+    background-color: transparent;
+}
+
+#mem1:not(:checked):hover ~ .slider .dots label:nth-child(2) .dot{
+    background-color: white;
+}
+#mem1:active ~ .slider .dots label:nth-child(2) .dot{
+    background-color: var(--dot-active-color);
+}
+#mem1:checked ~ .slider .dots label:nth-child(2) .dot{
+    background-color: transparent;
+}
+
+#mem2:not(:checked):hover ~ .slider .dots label:nth-child(3) .dot{
+    background-color: white;
+}
+#mem2:active ~ .slider .dots label:nth-child(3) .dot{
+    background-color: var(--dot-active-color);
+}
+#mem2:checked ~ .slider .dots label:nth-child(3) .dot{
+    background-color: transparent;
+}
+
+
+#mem3:not(:checked):hover ~ .slider .dots label:nth-child(4) .dot{
+    background-color: white;
+}
+#mem3:active ~ .slider .dots label:nth-child(4) .dot{
+    background-color: var(--dot-active-color);
+}
+#mem3:checked ~ .slider .dots label:nth-child(4) .dot{
+    background-color: transparent;
+}
+
+.dots label:active > .dot{
+    border-color: var(--dot-active-color);
+    background-color: var(--dot-active-color);
+}
+
 
 /* css magic */
 
