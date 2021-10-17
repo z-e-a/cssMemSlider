@@ -66,17 +66,18 @@ body > input{
     display: grid;
     grid-template-columns: repeat(var(--mems-cnt), var(--width));
     /* transform: translateX(20vw); */
+    column-gap: 20vw;
 }
 
 .slide{
-    width: var(--width)w;
+    width: var(--width);
     display: flex;
     justify-content: center;
 }
 
 .slide img{
-    object-fit: contain;
-    /* width: 100%; */
+    object-fit: scale-down;
+    width: 100%;
     height: 30vh;
     
 }
@@ -186,19 +187,19 @@ body > input{
 /* css magic */
 
 #mem0:checked ~ .slider .slider-wrapper{
-    transform: translateX( calc(0 * var(--width)));
+    transform: translateX( calc(0 * var(--width) + 0 * 20vw));
 }
 
 #mem1:checked ~ .slider .slider-wrapper{
-    transform: translateX( calc(-1 * var(--width)));
+    transform: translateX( calc(-1 * var(--width) + -1 * 20vw));
 }
 
 #mem2:checked ~ .slider .slider-wrapper{
-    transform: translateX( calc(-2 * var(--width)));
+    transform: translateX( calc(-2 * var(--width) + -2 * 20vw));
 }
 
 #mem3:checked ~ .slider .slider-wrapper{
-    transform: translateX( calc(-3 * var(--width)));
+    transform: translateX( calc(-3 * var(--width) + -3 * 20vw));
 }
 
 #mem0:checked ~ .slider .text-wrapper{
@@ -236,6 +237,30 @@ body > input{
         box-shadow: 0px 0px 8px 2px rgba(255, 255, 255, 0.2) inset;
         justify-items: center;
     }
-    
+
+    .text-wrapper{
+        /* display: grid; */
+        /* grid-template-columns: repeat(var(--mems-cnt), var(--width)); */
+        /* transform: translateX(0vw); */
+        /* transition: all var(--anim-spd) ease-in-out; */
+        column-gap: 20vw;
+        justify-items: center;
+    }
+        #mem0:checked ~ .slider .text-wrapper{
+            transform: translateX( calc(0 * var(--width) + 0 * 20vw));
+        }
+        
+        #mem1:checked ~ .slider .text-wrapper{
+            transform: translateX( calc(-1 * var(--width) + -1 * 20vw));
+        }
+        
+        #mem2:checked ~ .slider .text-wrapper{
+            transform: translateX( calc(-2 * var(--width) + -2 * 20vw));
+        }
+        
+        #mem3:checked ~ .slider .text-wrapper{
+            transform: translateX( calc(-3 * var(--width) + -3 * 20vw));
+        }
+             
 
 }
