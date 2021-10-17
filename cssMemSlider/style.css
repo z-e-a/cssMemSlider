@@ -1,0 +1,109 @@
+:root {
+    --bg-color: #25282a;
+    --dot-color: #71abfe;
+    --width: 70vw;
+}
+
+body{
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    font-size: 16px;
+}
+
+.slider{
+    margin: 0 auto;
+    width: 70vw;
+    display: grid;
+    grid-template-areas:
+    "slides slides"
+    "text dots";
+    gap: 2vw;
+    background-color: var(--bg-color);
+    align-items: center;
+    overflow: hidden;
+}
+
+.slider-wrapper{
+    grid-area: slides;
+    width: var(--width);
+    transition: all 2s ease-in-out;
+}
+
+.slides-content{
+    border-radius: 3vmin;
+    display: grid;
+    grid-template-columns: repeat(3, var(--width));
+    /* transform: translateX(20vw); */
+}
+
+.slide{
+    width: var(--width)w;
+    display: flex;
+    justify-content: center;
+}
+
+.slide img{
+    object-fit: contain;
+    /* width: 100%; */
+    height: 50vh;
+    
+}
+
+
+.text{
+    grid-area: text;
+    overflow: hidden;
+}
+
+.text-wrapper{
+    display: grid;
+    grid-template-columns: repeat(3, var(--width));
+    /* transform: translateX(0vw); */
+    transition: all 2s ease-in-out;
+}
+
+.label{
+
+}
+
+.dots{
+    grid-area: dots;
+    width: 20vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dot{
+    display: block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    border: 0.2rem solid var(--dot-color);
+}
+
+/* css magic */
+
+#mem1:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(0 * var(--width)));
+}
+
+#mem2:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(-1 * var(--width)));
+}
+
+#mem3:checked ~ .slider .slider-wrapper{
+    transform: translateX( calc(-2 * var(--width)));
+}
+
+#mem1:checked ~ .slider .text-wrapper{
+    transform: translateX( calc(0 * var(--width)));
+}
+
+#mem2:checked ~ .slider .text-wrapper{
+    transform: translateX( calc(-1 * var(--width)));
+}
+
+#mem3:checked ~ .slider .text-wrapper{
+    transform: translateX( calc(-2 * var(--width)));
+}
